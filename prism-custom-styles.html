@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Code Formatter with Square Copy Button</title>
+    
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    
+    <style>
+        /* Code block container styling */
+        .code-block-container {
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8fafc;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            margin: 0;
+        }
+
+        .code-language {
+            font-size: 0.8rem;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* Square copy button styling */
+        .copy-code-button {
+            background-color: #374151;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .copy-code-button svg {
+            flex-shrink: 0;
+        }
+
+        .copy-code-button:hover {
+            background-color: #4b5563;
+            border-color: #4b5563;
+            color: white;
+        }
+
+        .copy-code-button:active {
+            background-color: #374151;
+            transform: translateY(1px);
+        }
+
+        /* Success state styling */
+        .copy-code-button.copied {
+            background-color: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+
+        /* Force clean white background and proper styling */
+        .code-block-container pre[class*="language-"] {
+            margin: 0 !important;
+            padding: 1.25rem !important;
+            background: #ffffff !important;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+            font-size: 0.9rem !important;
+            line-height: 1.6 !important;
+            white-space: pre !important;
+            word-wrap: normal !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        .code-block-container code[class*="language-"] {
+            font-family: inherit !important;
+            font-size: inherit !important;
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            white-space: pre !important;
+            word-wrap: normal !important;
+            display: block !important;
+            line-height: inherit !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            color: #1f2937 !important;
+        }
+
+        /* Token styling for syntax highlighting */
+        
+        /* Keywords: public, static, void, main, def, function, class, import, let, const, var, if, else, for, while, etc. */
+        .token.keyword,
+        .token.atrule {
+            color: #1e40af !important;
+            background-color: #dbeafe !important;
+            font-weight: 600 !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Data Types: String[], int, float, boolean, Array, Object, number, string, etc. */
+        .token.boolean,
+        .token.number,
+        .token.selector,
+        .token.attr-name,
+        .token.builtin {
+            color: #166534 !important;
+            background-color: #dcfce7 !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Methods/Functions: println, print, console.log, len, append, push, pop, etc. */
+        .token.function {
+            color: #7c2d12 !important;
+            background-color: #fae8ff !important;
+            font-weight: 500 !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Classes/Objects: System, PrintStream, Array, Object, Math, Date, etc. */
+        .token.class-name {
+            color: #9a3412 !important;
+            background-color: #fed7aa !important;
+            font-weight: 500 !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Strings/Literals: "Hello, World!", 'text', 123, true, false, etc. */
+        .token.string,
+        .token.char,
+        .token.symbol,
+        .token.inserted {
+            color: #0f766e !important;
+            background-color: #ccfbf1 !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Operators: +, -, *, /, =, ==, !=, &&, ||, etc. */
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .token.deleted,
+        .token.property,
+        .token.tag,
+        .token.regex,
+        .token.variable {
+            color: #dc2626 !important;
+            background-color: #fee2e2 !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Comments: single line and multi-line comments */
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: #374151 !important;
+            background-color: #f3f4f6 !important;
+            font-style: italic !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Brackets/Delimiters: {, }, [, ], (, ), ;, , */
+        .token.punctuation {
+            color: #4338ca !important;
+            background-color: #e0e7ff !important;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        .token.important,
+        .token.bold {
+            font-weight: bold !important;
+        }
+
+        .token.italic {
+            font-style: italic !important;
+        }
+
+        /* Inline code styling */
+        .inline-code {
+            background-color: #f3f4f6;
+            color: #dc2626;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* General styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1a1a1a;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .demo-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: #f9fafb;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .code-block-container {
+                margin: 1rem 0;
+                border-radius: 6px;
+            }
+            
+            .code-block-container pre[class*="language-"] {
+                padding: 1rem !important;
+                font-size: 0.85rem !important;
+            }
+            
+            .code-block-header {
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .copy-code-button {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                min-height: 32px;
+                padding: 0.3rem;
+            }
+            
+            .copy-code-button svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Code Formatter with Square Copy Button</h1>
+        
+        <div class="demo-section">
+            <h2>Demo: Java Hello World Program</h2>
+            <div id="demo-output"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Demo: Python Function</h2>
+            <div id="python-demo-output"></div>
+        </div>
+    </div>
+
+    <!-- Prism.js JavaScript for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+    <script>
+        // Response formatting configuration
+        const formatterTemplate = {
+            format: `# {title}\n\n{answer}`,
+            maxAnswerWords: 999999
+        };
+
+        // Format response according to template
+        function formatResponse(question, answer) {
+            const title = question.endsWith('?') ? question : question + '?';
+            return formatterTemplate.format
+                .replace('{title}', title)
+                .replace('{answer}', answer);
+        }
+
+        // Convert markdown to HTML with Prism.js integration
+        function convertMarkdownToHTML(markdown) {
+            // Clean up markdown first
+            markdown = markdown.trim().replace(/\n\s*\n\s*\n/g, '\n\n');
+            
+            // Process code blocks first
+            let html = markdown.replace(/```([\s\S]*?)```/g, function(match, code) {
+                const firstLineBreak = code.indexOf('\n');
+                let language = '';
+                let codeContent = code;
+                
+                if (firstLineBreak > 0) {
+                    language = code.substring(0, firstLineBreak).trim();
+                    codeContent = code.substring(firstLineBreak + 1);
+                }
+                
+                // Clean up code content
+                codeContent = codeContent.replace(/^\n+/, '').replace(/\n+$/, '');
+                
+                // Generate a unique ID for this code block
+                const codeBlockId = 'code-block-' + Math.random().toString(36).substring(2, 9);
+                
+                // Store the original code content
+                const originalCode = codeContent;
+                
+                // Map common language aliases
+                const languageMap = {
+                    'py': 'python',
+                    'js': 'javascript',
+                    'ts': 'typescript',
+                    'sh': 'bash',
+                    'shell': 'bash'
+                };
+                
+                const prismLanguage = languageMap[language.toLowerCase()] || language.toLowerCase();
+                
+                // Escape HTML characters
+                let displayCode = codeContent
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+                
+                // Store original code in base64 for copying
+                const encodedOriginalCode = btoa(unescape(encodeURIComponent(originalCode)));
+                
+                return `
+                    <div class="code-block-container">
+                        <div class="code-block-header">
+                            <span class="code-language">${language || 'code'}</span>
+                            <button class="copy-code-button" onclick="copyCodeBlock('${codeBlockId}')" data-tooltip="Copy code">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <pre class="language-${prismLanguage}"><code id="${codeBlockId}" class="language-${prismLanguage}" data-original-code="${encodedOriginalCode}">${displayCode}</code></pre>
+                    </div>
+                `;
+            });
+            
+            // Process inline code
+            html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
+            
+            // Process other markdown elements
+            html = html
+                .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+            
+            // Convert line breaks to HTML
+            html = html
+                .split('\n\n')
+                .map(paragraph => {
+                    if (paragraph.match(/^<(h[1-6]|div|pre)/)) {
+                        return paragraph;
+                    }
+                    return '<p>' + paragraph.replace(/\n/g, '<br>') + '</p>';
+                })
+                .join('')
+                .replace(/<p><\/p>/g, '')
+                .replace(/<p>(<h[1-6]>.*?<\/h[1-6]>)<\/p>/g, '$1')
+                .replace(/<p>(<div.*?<\/div>)<\/p>/g, '$1');
+            
+            return html.trim();
+        }
+
+        // Process and display response
+        async function processResponse(query, aiResponse) {
+            const formattedResponse = formatResponse(query, aiResponse.answer);
+            const htmlResponse = convertMarkdownToHTML(formattedResponse);
+            return htmlResponse;
+        }
+
+        // Function to copy a specific code block with preserved formatting
+        function copyCodeBlock(codeBlockId) {
+            const codeBlock = document.getElementById(codeBlockId);
+            if (!codeBlock) return;
+            
+            try {
+                // Get the button for visual feedback
+                const button = document.querySelector(`button[onclick="copyCodeBlock('${codeBlockId}')"]`);
+                
+                // Decode the original code
+                const encodedCode = codeBlock.dataset.originalCode;
+                const textToCopy = decodeURIComponent(escape(atob(encodedCode)));
+                
+                // Use the modern clipboard API
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        showCopySuccess(button);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy code:', err);
+                        fallbackCopyTextToClipboard(textToCopy, button);
+                    });
+            } catch (error) {
+                console.error('Failed to decode code:', error);
+            }
+        }
+
+        // Show copy success feedback
+        function showCopySuccess(button) {
+            if (button) {
+                const originalContent = button.innerHTML;
+                button.classList.add('copied');
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"></polyline>
+                    </svg>
+                `;
+                
+                setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.classList.remove('copied');
+                }, 2000);
+            }
+        }
+
+        // Fallback copy function for older browsers
+        function fallbackCopyTextToClipboard(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopySuccess(button);
+                }
+            } catch (err) {
+                console.error('Fallback: Unable to copy', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Initialize Prism.js after DOM is loaded
+        function initializePrism() {
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+        }
+
+        // Demo the functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Java Hello World demo
+            const javaDemo = `## Java Hello World Program
+
+Here's the classic Java "Hello, World!" program:
+
+\`\`\`java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+\`\`\`
+
+This program demonstrates the basic structure of a Java application with proper formatting and syntax highlighting.`;
+
+            // Python demo
+            const pythonDemo = `## Python Function Example
+
+Here's a Python function with clean formatting:
+
+\`\`\`python
+def greet(name):
+    """
+    Greets a person with their name.
+    
+    Args:
+        name (str): The name of the person to greet
+    
+    Returns:
+        str: A greeting message
+    """
+    if not name:
+        return "Hello, World!"
+    return f"Hello, {name}!"
+
+# Example usage
+message = greet("Alice")
+print(message)  # Output: Hello, Alice!
+\`\`\`
+
+The copy button is now a perfect square with just the copy icon.`;
+
+            // Process and display demos
+            processResponse("Java Demo", { answer: javaDemo }).then(html => {
+                document.getElementById('demo-output').innerHTML = html;
+                initializePrism();
+            });
+
+            processResponse("Python Demo", { answer: pythonDemo }).then(html => {
+                document.getElementById('python-demo-output').innerHTML = html;
+                initializePrism();
+            });
+        });
+
+        // Attach functions to window object for global access
+        window.formatResponse = formatResponse;
+        window.convertMarkdownToHTML = convertMarkdownToHTML;
+        window.processResponse = processResponse;
+        window.copyCodeBlock = copyCodeBlock;
+        window.initializePrism = initializePrism;
+    </script>
+</body>
+</html>

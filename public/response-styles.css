@@ -1,0 +1,868 @@
+/* Response formatting styles */
+.markdown-response {
+    font-family: 'Raleway', sans-serif; /* Apply Raleway font */
+    font-size: 1.05rem; /* Slightly increase font size */
+    line-height: 1.7; /* Improve line spacing for readability */
+    color: var(--text-primary, #333); /* Use CSS variable for text color */
+    padding: 1.5rem; /* Add overall padding to the response area */
+}
+
+ 
+ 
+/* Additional black border for any text on white/light backgrounds in dark mode */ 
+[data-theme="dark"] *[style*="background-color: white"], 
+[data-theme="dark"] *[style*="background-color: #fff"], 
+[data-theme="dark"] *[style*="background-color: #ffffff"], 
+[data-theme="dark"] *[style*="background: white"], 
+[data-theme="dark"] *[style*="background: #fff"], 
+[data-theme="dark"] *[style*="background: #ffffff"], 
+[data-theme="dark"] .light-background, 
+[data-theme="dark"] .white-background { 
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black, 
+        -2px -2px 0 black, 
+        2px -2px 0 black, 
+        -2px 2px 0 black, 
+        2px 2px 0 black !important; 
+} 
+ 
+/* Specific targeting for inline code elements in dark mode */ 
+[data-theme="dark"] code, 
+[data-theme="dark"] .inline-code, 
+[data-theme="dark"] pre code, 
+[data-theme="dark"] .hljs, 
+[data-theme="dark"] .highlight { 
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black, 
+        -2px -2px 0 black, 
+        2px -2px 0 black, 
+        -2px 2px 0 black, 
+        2px 2px 0 black !important; 
+}
+
+.markdown-response > *:not(:last-child) {
+    margin-bottom: 1rem; /* Add spacing between major elements */
+}
+
+.markdown-response h1 {
+    font-size: 2rem; /* Larger font size for main headings */
+    color: var(--nexus-primary-glow); /* Use primary glow for emphasis */
+    margin-bottom: 1.8rem; /* More space below heading */
+    font-weight: 700;
+    line-height: 1.2;
+    border-bottom: 2px solid var(--nexus-border-color); /* Themed border */
+    padding-bottom: 0.75rem;
+    text-transform: uppercase; /* Make headings stand out */
+    letter-spacing: 0.05em;
+}
+
+.markdown-response h2 {
+    font-size: 1.6rem;
+    color: var(--nexus-accent-color); /* Use accent color for sub-headings */
+    margin: 2rem 0 1.2rem; /* Increased vertical spacing */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-left: 0.5rem; /* Slight indentation */
+    border-left: 4px solid var(--nexus-accent-color); /* Accent border */
+}
+
+.markdown-response h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary, #1a1a1a);
+    margin: 1.5rem 0 1rem;
+    font-weight: 600;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed var(--nexus-border-color-light); /* Subtle separator */
+}
+
+.markdown-response p {
+    margin-bottom: 1.2rem;
+    color: var(--text-secondary, white); /* Use themed text color */
+}
+
+.markdown-response strong {
+    font-weight: 700;
+    color: var(--nexus-accent-color); /* Stronger emphasis with accent color */
+}
+
+.markdown-response em {
+    font-style: italic;
+    color: var(--text-secondary-light, #4b5563); /* Themed italic text */
+}
+
+.markdown-response a {
+    color: var(--accent-color, #2563eb);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.markdown-response a:hover {
+    border-bottom-color: var(--accent-color, #2563eb);
+    color: #1d4ed8;
+}
+
+/* Inline code styling */
+.inline-code {
+    background-color: var(--code-inline-bg); /* Use theme variable for background */
+    color: var(--code-inline-text); /* Use theme variable for text */
+    padding: 0.2em 0.4em;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: #333; /* Darker text for contrast */
+}
+
+.inline-code .file-extension {
+    color: #007bff; /* Blue for file extensions */
+}
+
+.inline-code .number {
+    color: #dc3545; /* Red for numbers */
+}
+
+/* Code block styling - Clean white background with proper padding */
+.code-block-container {
+    margin: 2rem 0; /* Increased margin for better separation */
+    border-radius: 10px; /* Slightly more rounded corners */
+    overflow: hidden;
+    border: 1px solid var(--code-block-border);
+    background-color: var(--code-block-bg); /* Use theme variable for background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--code-block-header-bg); /* Use theme variable for header background */
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #b3ddeb;
+    margin: 0;
+}
+
+.copy-code-button {
+    margin-left: auto;
+    background-color: #a7d9ed; /* Light blue for button */
+    border: 1px solid #8acbe2;
+    border-radius: 5px;
+    color: #333;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: none; /* Hide this button as `code-copy.js` will handle it */
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.code-block-container:hover .copy-code-button {
+    opacity: 0; /* Hide on hover */
+    visibility: hidden; /* Hide on hover */
+}
+
+.code-language {
+    font-size: 0.85rem;
+    color: #333; /* Darker text for contrast */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.copy-code-button svg {
+    stroke: #333;
+}
+
+.copy-code-button span {
+    color: #333;
+}
+
+.copy-code-button:hover {
+    background-color: #8acbe2;
+    border-color: #6bb8d4;
+    color: #333;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.copy-code-button:hover svg {
+    stroke: #333;
+}
+
+.copy-code-button:active {
+    background-color: #6bb8d4;
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#copyResponseBtn {
+    display: none;
+}
+
+.status-operational {
+    color: var(--nexus-primary-glow);
+}
+
+.stop-button {
+    margin-left: 12px;
+    background-color: #e75480;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(231, 84, 128, 0.2);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.stop-button.visible {
+    display: flex;
+}
+
+.stop-button:hover {
+    background-color: #c2185b;
+    box-shadow: 0 6px 15px rgba(231, 84, 128, 0.3);
+}
+
+.stop-button:active {
+    background-color: #a01346;
+    box-shadow: 0 2px 5px rgba(231, 84, 128, 0.15);
+}
+
+.image-synthesis-container {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.image-synthesis-img {
+    max-width: 100%;
+    max-height: 512px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--nexus-border-color);
+}
+
+.error-box {
+    border-left-color: var(--nexus-error-color);
+}
+
+/* Code content styling - Clean background with proper left padding */
+.code-block-container pre {
+    margin: 0;
+    padding: 1.5rem; /* Increased padding */
+    background-color: var(--code-block-bg); /* Use theme variable for background */
+    overflow-x: auto;
+    font-family: 'Roboto Mono', monospace; /* Consistent code font */
+    font-size: 0.95rem; /* Slightly larger code font */
+    line-height: 1.65; /* Improved line height for code */
+    color: var(--code-text); /* Use theme variable for text color */
+    white-space: pre-wrap; /* Allow wrapping for long lines */
+    word-break: break-all; /* Break long words */
+    border: none;
+    border-radius: 0;
+}
+
+/* Prism.js overrides for light theme syntax highlighting */
+.light-theme .code-block-container pre,
+.light-theme .code-block-container code {
+    background-color: var(--code-block-bg) !important;
+    color: var(--code-text) !important;
+}
+
+/* Dark mode specific syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--prism-comment); /* Subtle gray for comments */
+}
+
+.token.punctuation {
+    color: var(--prism-punctuation); /* Light gray for punctuation */
+}
+
+.token.selector,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.attr-name,
+.token.deleted {
+    color: var(--prism-property); /* Purple for tags, numbers, booleans, etc. */
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.builtin,
+.token.inserted {
+    color: var(--prism-string); /* Green for strings, chars, builtins */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: var(--prism-operator); /* Cyan for operators, URLs */
+}
+
+.token.atrule,
+.token.keyword,
+.token.selector.attr[title],
+.token.important,
+.token.regex,
+.token.variable {
+    color: var(--prism-keyword); /* Orange for keywords, at-rules, variables */
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+.token.function {
+    color: var(--prism-function); /* Blue for functions */
+}
+
+.token.class-name {
+    color: var(--prism-class-name); /* Yellow for class names */
+}
+
+.code-block-container code {
+    font-family: inherit;
+    font-size: inherit;
+    background: transparent; /* Ensure no background interference from Prism */
+    padding: 0;
+    border: none;
+    white-space: pre-wrap; /* Inherit pre-wrap from pre tag */
+    word-break: break-all; /* Inherit break-all from pre tag */
+    display: block;
+    color: inherit;
+    line-height: inherit;
+    border-radius: 0;
+}
+
+/* Prism.js Theme Overrides for Dark Mode */
+/* These styles ensure Prism.js looks good in the dark theme */
+:root {
+    --code-block-bg: #40E0D0; /* Turquoise background for code blocks in dark mode */
+    --code-block-border: #333;
+    --code-block-header-bg: #21252b;
+    --code-text: #e0e0e0; /* Lighter text for better contrast in dark mode */
+    --code-inline-bg: #ffd1ec; /* Light pink for inline code in dark mode */
+    --code-inline-text: #c2185b; /* Dark pink text for contrast */
+    --prism-operator: #e75480; /* Light pink for operators/symbols */
+    --prism-keyword: #e75480; /* Light pink for keywords/commands */
+    --prism-string-bg: #ffd1ec; /* Light pink for string literal background */
+    --prism-string-text: #c2185b; /* Dark pink for string literal text */
+    --prism-comment: #5C6370; /* Gray for comments */
+    --prism-cdata:
+    --prism-punctuation: #ABB2BF;
+    --prism-namespace: #E06C75;
+    --prism-property: #61AFEF; /* Light blue for variables/functions */
+    --prism-tag: #E06C75; /* Pink for operators/symbols */
+    --prism-boolean: #D19A66; /* Orange for operators/symbols */
+    --prism-number: #98C379; /* Light green for numbers */
+    --prism-constant: #D19A66; /* Orange for operators/symbols */
+    --prism-symbol: #D19A66; /* Orange for operators/symbols */
+    --prism-selector: #98C379; /* Green for strings/quoted text */
+    --prism-attr-name: #98C379; /* Green for strings/quoted text */
+    --prism-string: #98C379; /* Green for strings/quoted text */
+    --prism-char: #98C379; /* Green for strings/quoted text */
+    --prism-builtin: #98C379; /* Green for strings/quoted text */
+    --prism-inserted: #98C379; /* Green for strings/quoted text */
+    --prism-operator: #e75480; /* Light pink for operators/symbols */
+    --prism-entity: #E06C75; /* Pink for operators/symbols */
+    --prism-url: #E06C75; /* Pink for operators/symbols */
+    --prism-variable: #61AFEF; /* Light blue for variables/functions */
+    --prism-atrule: #C678DD; /* Purple for variables/functions */
+    --prism-attr-value: #C678DD; /* Purple for variables/functions */
+    --prism-function: #61AFEF; /* Light blue for variables/functions */
+    --prism-class-name: #E5C07B; /* Yellow for strings/quoted text */
+    --prism-keyword: #e75480; /* Light pink for keywords/commands */
+    --prism-regex: #E06C75; /* Pink for operators/symbols */
+    --prism-important: #E06C75; /* Pink for operators/symbols */
+    --prism-bold: #E5C07B; /* Yellow for strings/quoted text */
+    --prism-italic: #C678DD; /* Purple for variables/functions */
+    --prism-deleted: #E06C75; /* Pink for operators/symbols */
+}
+
+/* Apply black border for better visibility in dark mode */ 
+[data-theme="dark"] .inline-code, 
+[data-theme="dark"] .code-block-container pre, 
+[data-theme="dark"] .code-block-container code, 
+[data-theme="dark"] .code-block-container, 
+[data-theme="dark"] .code-block-header, 
+[data-theme="dark"] .token.function, 
+[data-theme="dark"] .token.variable, 
+[data-theme="dark"] .token.builtin, 
+[data-theme="dark"] code span.file-ext, 
+[data-theme="dark"] .token.string, 
+[data-theme="dark"] .token.number, 
+[data-theme="dark"] .token.constant, 
+[data-theme="dark"] .token.keyword, 
+[data-theme="dark"] .token.operator, 
+[data-theme="dark"] .token.punctuation, 
+[data-theme="dark"] .token.selector, 
+[data-theme="dark"] .token.tag, 
+[data-theme="dark"] .token.attr-name, 
+[data-theme="dark"] .token.attr-value, 
+[data-theme="dark"] .token.comment { 
+    /* Fallback with multiple text-shadows for better browser support */ 
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black, 
+        -2px -2px 0 black, 
+        2px -2px 0 black, 
+        -2px 2px 0 black, 
+        2px 2px 0 black; 
+} 
+ 
+/* Additional black border for any text on white/light backgrounds in dark mode */ 
+[data-theme="dark"] *[style*="background-color: white"], 
+[data-theme="dark"] *[style*="background-color: #fff"], 
+[data-theme="dark"] *[style*="background-color: #ffffff"], 
+[data-theme="dark"] *[style*="background: white"], 
+[data-theme="dark"] *[style*="background: #fff"], 
+[data-theme="dark"] *[style*="background: #ffffff"], 
+[data-theme="dark"] .light-background, 
+[data-theme="dark"] .white-background { 
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black, 
+        -2px -2px 0 black, 
+        2px -2px 0 black, 
+        -2px 2px 0 black, 
+        2px 2px 0 black !important; 
+} 
+ 
+/* Specific targeting for inline code elements in dark mode */ 
+[data-theme="dark"] code, 
+[data-theme="dark"] .inline-code, 
+[data-theme="dark"] pre code, 
+[data-theme="dark"] .hljs, 
+[data-theme="dark"] .highlight { 
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black, 
+        -2px -2px 0 black, 
+        2px -2px 0 black, 
+        -2px 2px 0 black, 
+        2px 2px 0 black !important; 
+}
+
+/* Apply Prism token colors using CSS variables */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--prism-comment);
+}
+
+.token.punctuation {
+    color: var(--prism-punctuation);
+}
+
+.token.namespace {
+    color: var(--prism-namespace);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: var(--prism-property);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: var(--prism-string);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: var(--prism-operator);
+}
+
+.token.variable {
+    color: var(--prism-variable);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: var(--prism-keyword);
+}
+
+.token.function {
+    color: var(--prism-function);
+}
+
+.token.regex,
+.token.important {
+    color: var(--prism-regex);
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+/* Light Theme Overrides for Code Blocks */
+html.light-theme {
+    --code-block-bg: #f5f5f5;
+    --code-block-border: #ddd;
+    --code-block-header-bg: #e0e0e0;
+    --code-text: #000; /* Ensure dark text for visibility in light mode */
+    --code-inline-bg: #e0e0e0;
+    --code-inline-text: #c22;
+    --code-inline-border: #ccc;
+
+    /* Adjust Prism token colors for light theme if needed */
+    --prism-comment: #6a737d;
+    --prism-punctuation: #333;
+    --prism-namespace: #d73a49;
+    --prism-property: #005cc5;
+    --prism-tag: #22863a;
+    --prism-boolean: #005cc5;
+    --prism-number: #005cc5;
+    --prism-constant: #005cc5;
+    --prism-symbol: #005cc5;
+    --prism-selector: #6f42c1;
+    --prism-attr-name: #6f42c1;
+    --prism-string: #032f62;
+    --prism-char: #032f62;
+    --prism-builtin: #005cc5;
+    --prism-inserted: #032f62;
+    --prism-operator: #d73a49;
+    --prism-entity: #d73a49;
+    --prism-url: #d73a49;
+    --prism-variable: #e36209;
+    --prism-atrule: #d73a49;
+    --prism-attr-value: #032f62;
+    --prism-function: #6f42c1;
+    --prism-class-name: #e36209;
+    --prism-keyword: #d73a49;
+    --prism-regex: #d73a49;
+    --prism-important: #d73a49;
+    --prism-bold: #333;
+    --prism-italic: #333;
+    --prism-deleted: #d73a49;
+}
+
+/* Stop Button Styling */
+#stop-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* CIRCULAR not rectangular */
+    background: #ff4444;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stop-button {
+    margin-left: 12px;
+    background-color: #e75480;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(231, 84, 128, 0.2);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.stop-button.visible {
+    display: flex;
+}
+
+.stop-button:hover {
+    background-color: #c2185b;
+    box-shadow: 0 6px 15px rgba(231, 84, 128, 0.3);
+}
+
+.stop-button:active {
+    background-color: #a01346;
+    box-shadow: 0 2px 5px rgba(231, 84, 128, 0.15);
+}
+
+.image-synthesis-container {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.image-synthesis-img {
+    max-width: 100%;
+    max-height: 512px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--nexus-border-color);
+}
+
+.error-box {
+    border-left-color: var(--nexus-error-color);
+}
+
+/* Code content styling - Clean background with proper left padding */
+.code-block-container pre {
+    margin: 0;
+    padding: 1.5rem; /* Increased padding */
+    background-color: var(--code-block-bg); /* Use theme variable for background */
+    overflow-x: auto;
+    font-family: 'Roboto Mono', monospace; /* Consistent code font */
+    font-size: 0.95rem; /* Slightly larger code font */
+    line-height: 1.65; /* Improved line height for code */
+    color: var(--code-text); /* Use theme variable for text color */
+    white-space: pre-wrap; /* Allow wrapping for long lines */
+    word-break: break-all; /* Break long words */
+    border: none;
+    border-radius: 0;
+}
+
+/* Prism.js overrides for light theme syntax highlighting */
+.light-theme .code-block-container pre,
+.light-theme .code-block-container code {
+    background-color: var(--code-block-bg) !important;
+    color: var(--code-text) !important;
+}
+
+/* Dark mode specific syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--prism-comment); /* Subtle gray for comments */
+}
+
+.token.punctuation {
+    color: var(--prism-punctuation); /* Light gray for punctuation */
+}
+
+.token.selector,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.attr-name,
+.token.deleted {
+    color: var(--prism-property); /* Purple for tags, numbers, booleans, etc. */
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.builtin,
+.token.inserted {
+    color: var(--prism-string); /* Green for strings, chars, builtins */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: var(--prism-operator); /* Cyan for operators, URLs */
+}
+
+.token.atrule,
+.token.keyword,
+.token.selector.attr[title],
+.token.important,
+.token.regex,
+.token.variable {
+    color: var(--prism-keyword); /* Orange for keywords, at-rules, variables */
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+.token.function {
+    color: var(--prism-function); /* Blue for functions */
+}
+
+.token.class-name {
+    color: var(--prism-class-name); /* Yellow for class names */
+}
+
+.code-block-container code {
+    font-family: inherit;
+    font-size: inherit;
+    background: transparent; /* Ensure no background interference from Prism */
+    padding: 0;
+    border: none;
+    white-space: pre-wrap; /* Inherit pre-wrap from pre tag */
+    word-break: break-all; /* Inherit break-all from pre tag */
+    display: block;
+    color: inherit;
+    line-height: inherit;
+    border-radius: 0;
+}
+
+/* Prism.js Theme Overrides for Dark Mode */
+/* These styles ensure Prism.js looks good in the dark theme */
+:root {
+    --code-block-bg: #40E0D0; /* Turquoise background for code blocks in dark mode */
+    --code-block-border: #333;
+    --code-block-header-bg: #21252b;
+    --code-text: #e0e0e0; /* Lighter text for better contrast in dark mode */
+    --code-inline-bg: #ffd1ec; /* Light pink for inline code in dark mode */
+    --code-inline-text: #c2185b; /* Dark pink text for contrast */
+    --prism-operator: #e75480; /* Light pink for operators/symbols */
+    --prism-keyword: #e75480; /* Light pink for keywords/commands */
+    --prism-string-bg: #ffd1ec; /* Light pink for string literal background */
+    --prism-string-text: #c2185b; /* Dark pink for string literal text */
+    --prism-comment: #5C6370; /* Gray for comments */
+    --prism-cdata:
+    --prism-punctuation: #ABB2BF;
+    --prism-namespace: #E06C75;
+    --prism-property: #61AFEF; /* Light blue for variables/functions */
+    --prism-tag: #E06C75; /* Pink for operators/symbols */
+    --prism-boolean: #D19A66; /* Orange for operators/symbols */
+    --prism-number: #98C379; /* Light green for numbers */
+    --prism-constant: #D19A66; /* Orange for operators/symbols */
+    --prism-symbol: #D19A66; /* Orange for operators/symbols */
+    --prism-selector: #98C379; /* Green for strings/quoted text */
+    --prism-attr-name: #98C379; /* Green for strings/quoted text */
+    --prism-string: #98C379; /* Green for strings/quoted text */
+    --prism-char: #98C379; /* Green for strings/quoted text */
+    --prism-builtin: #98C379; /* Green for strings/quoted text */
+    --prism-inserted: #98C379; /* Green for strings/quoted text */
+    --prism-operator: #e75480; /* Light pink for operators/symbols */
+    --prism-entity: #E06C75; /* Pink for operators/symbols */
+    --prism-url: #E06C75; /* Pink for operators/symbols */
+    --prism-variable: #61AFEF; /* Light blue for variables/functions */
+    --prism-atrule: #C678DD; /* Purple for variables/functions */
+    --prism-attr-value: #C678DD; /* Purple for variables/functions */
+    --prism-function: #61AFEF; /* Light blue for variables/functions */
+    --prism-class-name: #E5C07B; /* Yellow for strings/quoted text */
+    --prism-keyword: #e75480; /* Light pink for keywords/commands */
+    --prism-regex: #E06C75; /* Pink for operators/symbols */
+    --prism-important: #E06C75; /* Pink for operators/symbols */
+    --prism-bold: #E5C07B; /* Yellow for strings/quoted text */
+    --prism-italic: #C678DD; /* Purple for variables/functions */
+    --prism-deleted: #E06C75; /* Pink for operators/symbols */
+}
+
+/* === Universal Black Text Border for Highlighted Code/Text on Light Backgrounds === */
+
+/* Universal class for any highlighted code/text on light backgrounds */
+.highlighted-code, .light-background-text {
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    -webkit-text-stroke: 0.7px black;
+    paint-order: stroke fill;
+}
+
+/* Language-agnostic selectors for all code blocks, inline code, and syntax highlights */
+[class*="language-"] .highlight,
+[class*="hljs-"],
+.syntax-highlight,
+.code-snippet {
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    -webkit-text-stroke: 0.7px black;
+    paint-order: stroke fill;
+}
+
+/* Extra: Ensure all code, pre, and token elements with light backgrounds get the border in both themes */
+[data-theme] code[style*="background"],
+[data-theme] pre[style*="background"],
+[data-theme] .token[style*="background"],
+[data-theme] .inline-code[style*="background"],
+[data-theme] .code-block-container[style*="background"],
+[data-theme] .code-language-label[style*="background"],
+[data-theme] .nexus-pink-bg-text {
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    -webkit-text-stroke: 0.7px black;
+    paint-order: stroke fill;
+}
+
+/* Responsive: Never obscure text, always enhance contrast */
+@media (max-width: 600px) {
+  .highlighted-code, .light-background-text, [class*="language-"] .highlight, [class*="hljs-"], .syntax-highlight, .code-snippet {
+    -webkit-text-stroke: 0.5px black;
+    font-size: 0.98em;
+  }
+}

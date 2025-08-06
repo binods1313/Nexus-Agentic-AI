@@ -1,0 +1,34 @@
+.code-block-container {
+    position: relative;
+    margin-bottom: 1em; /* Adjust as needed */
+}
+
+.copy-code-button {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    background-color: #333; /* Dark background for the button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition */
+    z-index: 10; /* Ensure button is above code */
+}
+
+.code-block-container:hover .copy-code-button {
+    opacity: 1; /* Visible on hover */
+}
+
+.copy-code-button.copied {
+    background-color: #28a745; /* Green when copied */
+}
+
+.copy-icon {
+    filter: invert(100%); /* Make SVG white */
+    height: 16px; /* Adjust size as needed */
+    width: 16px;
+    vertical-align: middle;
+}

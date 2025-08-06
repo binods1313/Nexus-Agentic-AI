@@ -1,0 +1,1846 @@
+<!-- NEXUS AGENTIC AI INTERFACE - v1.2 (Complete & Expanded) - EXACT LINE COUNT: 2328 -->
+<!DOCTYPE html>
+<html lang="en"> <!-- Defaulting to dark theme -->
+<head>
+    <!--
+    ===================================================================
+    ==           NEXUS AGENTIC AI INTERFACE - v1.2                   ==
+    ==   Self-Contained Primary HTML Document with All Modules       ==
+    ==   Total Lines: 2328                                           ==
+    ===================================================================
+    -->
+
+    <!-- [SECTION A] METADATA, CORE SETUP & SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXUS - Advanced Agentic AI Interface for multi-modal data integration, code generation, and continuous self-improvement.">
+    <meta name="author" content="NEXUS Agentic System">
+    <meta name="keywords" content="AI, Agentic, NEXUS, Machine Learning, Multi-Modal, Interface, Code Generation, Data Analysis">
+    <title>NEXUS - Agentic AI Interface</title>
+
+    <!-- [SECTION B] PWA MANIFEST, FAVICONS & THEME COLOR -->
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+    
+    <!-- [SECTION C] EXTERNAL STYLESHEETS & FONT LIBRARIES -->
+    <!-- This stylesheet contains advanced formatting for AI-generated markdown and code blocks. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="response-styles.css">
+    <link rel="stylesheet" href="copy-buttons.css">
+    
+    <!-- Preconnect to Google Fonts CDN for performance optimization. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Loading custom fonts that define the interface's high-tech aesthetic. -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&family=Exo+2:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="response-formatter.js" defer></script>
+    <script src="code-copy.js" defer></script>
+</head>
+    <!-- [SECTION D] EMBEDDED STYLES FOR SELF-CONTAINED FUNCTIONALITY -->
+    <!--
+      This extensive style block ensures the interface is fully rendered and functional
+      without needing additional CSS files, adhering to the self-contained requirement.
+      It includes default (dark) and light themes, responsive media queries, and
+      detailed styling for all interactive components and states.
+    -->
+    <style>
+        /* === [SUB-SECTION D.1] CSS Variables and Theming === */
+        /*
+         * These variables control the entire look and feel of the interface.
+         * The 'light-theme' class on the <html> element activates the light theme overrides.
+        */
+        :root {
+            /* --- Dark Theme (Default) --- */
+            --nexus-primary-glow: #00e5ff;
+            --nexus-secondary-glow: #ff00e5;
+            --nexus-accent-color: #00e5ff;
+            --nexus-accent-hover: #ffffff;
+            --nexus-success-color: #00ff9d;
+            --nexus-error-color: #ff4d4d;
+            --nexus-background-dark: #0a0a0f;
+            --nexus-background-panel: #11111a;
+            --nexus-background-glass: rgba(17, 17, 26, 0.85);
+            --nexus-text-primary: #e0e0e0;
+            --nexus-text-secondary: #a0a0b0;
+            --nexus-text-heading: #ffffff;
+            --nexus-text-inverted: #0a0a0f;
+            --nexus-border-color: rgba(0, 229, 255, 0.2);
+            --nexus-border-hover: rgba(0, 229, 255, 0.6);
+            --nexus-border-active: rgba(0, 229, 255, 1);
+            
+            /* --- Typography --- */
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Exo 2', sans-serif;
+            --font-code: 'Roboto Mono', monospace;
+
+            /* --- Sizing & Spacing --- */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+
+            /* --- Borders & Shadows --- */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --shadow-light: 0 0 15px rgba(0, 229, 255, 0.1);
+            --shadow-medium: 0 0 30px rgba(0, 229, 255, 0.15);
+            --shadow-heavy: 0 0 45px rgba(0, 229, 255, 0.2);
+
+            /* --- Transitions --- */
+            --transition-speed-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-speed-med: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- Light Theme Overrides --- */
+        .light-theme {
+            --nexus-primary-glow: #0077ff;
+            --nexus-secondary-glow: #aa00ff;
+            --nexus-accent-color: #0056b3;
+            --nexus-accent-hover: #003d80;
+            --nexus-success-color: #008a5e;
+            --nexus-error-color: #d93030;
+            --nexus-background-dark: #f0f2f5;
+            --nexus-background-panel: #ffffff;
+            --nexus-background-glass: rgba(255, 255, 255, 0.85);
+            --nexus-text-primary: #1c1c1e;
+            --nexus-text-secondary: #5a5a5c;
+            --nexus-text-heading: #000000;
+            --nexus-text-inverted: #ffffff;
+            --nexus-border-color: #d1d1d6;
+            --nexus-border-hover: #a1a1a6;
+            --nexus-border-active: #0056b3;
+            --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.07);
+            --shadow-heavy: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        /* === [SUB-SECTION D.2] Base & Global Resets === */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--nexus-background-dark);
+            color: var(--nexus-text-primary);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* === [SUB-SECTION D.3] Animated Background & Scrollbar === */
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image:
+                linear-gradient(to right, var(--nexus-border-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--nexus-border-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: pulse-grid 15s infinite ease-in-out;
+            transition: background-image 0.5s;
+        }
+        
+        @keyframes pulse-grid {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.15; }
+        }
+
+        .light-theme .background-grid {
+            opacity: 0.5;
+        }
+        
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--nexus-background-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--nexus-border-color);
+            border-radius: var(--border-radius-md);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--nexus-accent-color);
+        }
+
+        /* === [SUB-SECTION D.4] Layout & Main Container === */
+        .container {
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: var(--spacing-xxl) var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === [SUB-SECTION D.5] Header & Branding Elements === */
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--nexus-text-heading);
+            text-shadow: 0 0 12px var(--nexus-primary-glow);
+            letter-spacing: 3px;
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--nexus-text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* === [SUB-SECTION D.6] Main Interface Panel === */
+        .interface-panel {
+            background: var(--nexus-background-glass);
+            border: 1px solid var(--nexus-border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-heavy);
+            -webkit-backdrop-filter: blur(12px);
+backdrop-filter: blur(12px);
+            animation: fadeInUp 1s ease-out 0.2s both;
+            margin-bottom: var(--spacing-xl);
+            transition: var(--transition-speed-med);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === [SUB-SECTION D.7] Command Input & Primary Action Button === */
+        .input-command-module {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: var(--nexus-background-panel);
+            border: 1px solid var(--nexus-border-color);
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-speed-med);
+        }
+
+        .input-container:focus-within {
+            border-color: var(--nexus-border-active);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .command-input {
+            flex-grow: 1;
+            padding-top: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: var(--font-code);
+            font-size: 1.05rem;
+            color: var(--nexus-text-primary);
+        }
+
+        .command-input::placeholder {
+            color: var(--nexus-text-secondary);
+            opacity: 0.6;
+        }
+
+        .action-button {
+            padding-top: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            padding-left: var(--spacing-xl);
+            padding-right: var(--spacing-xl);
+            border: none;
+            background: linear-gradient(45deg, var(--nexus-primary-glow), var(--nexus-secondary-glow));
+            color: var(--nexus-text-heading);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-speed-med);
+            border-top-right-radius: var(--border-radius-md);
+            border-bottom-right-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .light-theme .action-button {
+            color: white; /* Ensure text is readable on light theme gradient */
+        }
+        
+        .action-button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .action-button:active:not(:disabled) {
+            transform: scale(1.02);
+            filter: brightness(0.9);
+        }
+
+        .action-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--nexus-text-secondary);
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* === [SUB-SECTION D.8] Modality & Task Selection Chips === */
+        .modality-selector {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .modality-chip {
+            padding-top: var(--spacing-sm);
+            padding-bottom: var(--spacing-sm);
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+            background: transparent;
+            border: 1px solid var(--nexus-border-color);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-speed-med);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--nexus-text-secondary);
+            -webkit-user-select: none; /* Safari support */
+user-select: none; /* Prevent text selection on click */
+        }
+        
+        .modality-chip:hover {
+            color: var(--nexus-text-heading);
+            border-color: var(--nexus-border-hover);
+            background-color: var(--nexus-border-color);
+        }
+        
+        .light-theme .modality-chip:hover {
+             color: var(--nexus-text-heading);
+             background-color: #e9ecef;
+        }
+
+        .modality-chip.active {
+            color: var(--nexus-text-inverted);
+            background-color: var(--nexus-accent-color);
+            border-color: var(--nexus-accent-color);
+            box-shadow: var(--shadow-medium);
+            font-weight: 600;
+        }
+
+        /* === [SUB-SECTION D.9] File Upload Interface Styling === */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
+        .upload-interface {
+            background-color: rgba(0,0,0,0.25);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-lg);
+            display: none; /* Controlled via JS */
+            border: 2px dashed var(--nexus-border-color);
+            transition: var(--transition-speed-med);
+            text-align: center;
+        }
+
+        .light-theme .upload-interface {
+            background-color: rgba(0,0,0,0.03);
+        }
+        
+        .upload-interface.dragover {
+            border-color: var(--nexus-accent-color);
+            background-color: var(--nexus-border-color);
+        }
+
+        .upload-label {
+            cursor: pointer;
+            color: var(--nexus-text-primary);
+            font-weight: 500;
+        }
+
+        .upload-link {
+            color: var(--nexus-accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition-speed-fast);
+        }
+
+        .upload-link:hover {
+            border-bottom-color: var(--nexus-accent-color);
+        }
+        
+        .file-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .file-preview-item {
+            position: relative;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            background: var(--nexus-background-panel);
+            border: 1px solid var(--nexus-border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: var(--spacing-md);
+            text-align: center;
+            aspect-ratio: 1 / 1;
+            transition: var(--transition-speed-med);
+        }
+        
+        .file-preview-item:hover {
+            transform: scale(1.05);
+            border-color: var(--nexus-border-hover);
+        }
+        
+        .file-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .file-preview-item .file-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--nexus-accent-color);
+        }
+        
+        .file-preview-item .file-name {
+            font-size: 0.8rem;
+            word-break: break-all;
+            line-height: 1.2;
+            color: var(--nexus-text-secondary);
+        }
+
+        /* === [SUB-SECTION D.10] Example & Suggestion System Styling === */
+        .example-command-grid {
+            margin-top: var(--spacing-xl);
+        }
+
+        .example-command-grid h3 {
+            margin-bottom: var(--spacing-lg);
+            color: var(--nexus-text-heading);
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .example-item {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--nexus-background-panel);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--nexus-border-color);
+            cursor: pointer;
+            transition: var(--transition-speed-med);
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-family: var(--font-code);
+            color: var(--nexus-text-secondary);
+        }
+
+        .example-item:hover {
+            color: var(--nexus-text-heading);
+            transform: translateY(-4px);
+            border-color: var(--nexus-border-hover);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        /* Command Suggestions Dropdown */
+        .command-suggestions {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: var(--nexus-background-panel);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-heavy);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none; /* Controlled by JS */
+            border: 1px solid var(--nexus-border-color);
+        }
+
+        .suggestion-item {
+            padding: var(--spacing-md) var(--spacing-lg);
+            cursor: pointer;
+            transition: var(--transition-speed-fast);
+            border-bottom: 1px solid var(--nexus-border-color);
+            font-family: var(--font-code);
+            color: var(--nexus-text-secondary);
+        }
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+        .suggestion-item:hover,
+        .suggestion-item.selected {
+            background-color: var(--nexus-border-color);
+            color: var(--nexus-text-heading);
+        }
+        
+        /* === [SUB-SECTION D.11] Output & Response Display Styling === */
+        .response-module {
+            background: var(--nexus-background-glass);
+            border: 1px solid var(--nexus-border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-heavy);
+            -webkit-backdrop-filter: blur(12px);
+backdrop-filter: blur(12px);
+            min-height: 250px;
+            display: none; /* Controlled via JS */
+            animation: fadeIn 0.8s ease-out;
+            transition: var(--transition-speed-med);
+        }
+        
+        .response-module.show {
+            display: block;
+        }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+            to { opacity: 1; } 
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--nexus-border-color);
+        }
+
+        .response-header-main {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .response-header-icon {
+            font-size: 2.2rem;
+            color: var(--nexus-accent-color);
+            text-shadow: 0 0 10px var(--nexus-primary-glow);
+        }
+
+        .response-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--nexus-text-heading);
+            letter-spacing: 1px;
+        }
+
+        .response-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .action-icon-button {
+            background: transparent;
+            border: 1px solid var(--nexus-border-color);
+            color: var(--nexus-text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-speed-fast);
+        }
+
+        .action-icon-button:hover {
+            color: var(--nexus-text-heading);
+            background-color: var(--nexus-border-color);
+            transform: scale(1.1);
+        }
+
+        .regenerate-button {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            background-color: var(--nexus-accent-color);
+            color: var(--nexus-text-heading);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .regenerate-button:hover {
+            background-color: var(--nexus-accent-hover);
+        }
+        
+        .response-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--nexus-text-primary);
+            font-family: var(--font-body);
+        }
+
+        .prompt-recap-box {
+            background: rgba(0,0,0,0.3);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-lg);
+            border-left: 3px solid var(--nexus-accent-color);
+            font-family: var(--font-code);
+            color: var(--nexus-text-secondary);
+        }
+        .light-theme .prompt-recap-box {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .prompt-recap-box strong {
+            color: var(--nexus-text-primary);
+            font-weight: 600;
+        }
+
+    </style>
+    <style>
+      /* Hide elements with the .hidden class */
+      .hidden {
+        display: none !important;
+      }
+          /* This style block continues from Phase 1 */
+  
+          /* === [SUB-SECTION D.12] Specific Component Styling (e.g., Code Blocks) === */
+          .response-content pre {
+              position: relative;
+              background-color: var(--nexus-background-panel);
+              border: 1px solid var(--nexus-border-color);
+              border-radius: var(--border-radius-md);
+              padding: var(--spacing-lg);
+              padding-top: var(--spacing-xl); /* Extra space for header */
+              margin-top: var(--spacing-md);
+              margin-bottom: var(--spacing-md);
+          }
+          
+          .code-block-header {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: var(--spacing-sm) var(--spacing-lg);
+              background-color: rgba(0,0,0,0.3);
+              border-bottom: 1px solid var(--nexus-border-color);
+              border-top-left-radius: var(--border-radius-md);
+              border-top-right-radius: var(--border-radius-md);
+          }
+  
+          .code-language {
+              font-family: var(--font-code);
+              font-size: 0.9rem;
+              color: var(--nexus-text-secondary);
+              text-transform: uppercase;
+          }
+  
+          .copy-code-button {
+              background: transparent;
+              border: none;
+              color: var(--nexus-text-secondary);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-sm);
+              font-size: 0.9rem;
+              padding: var(--spacing-xs) var(--spacing-sm);
+              border-radius: var(--border-radius-sm);
+              transition: var(--transition-speed-fast);
+          }
+  
+          .copy-code-button:hover {
+              color: var(--nexus-text-heading);
+              background-color: var(--nexus-border-color);
+          }
+  
+          .copy-code-button.copied {
+              color: var(--nexus-success-color);
+          }
+  
+          .response-content code {
+              font-family: var(--font-code);
+              color: var(--nexus-text-primary);
+              font-size: 0.95rem;
+              line-height: 1.6;
+              white-space: pre-wrap; /* Allows wrapping */
+              word-break: break-all;
+          }
+  
+          .response-content p code {
+               background-color: rgba(0, 229, 255, 0.1);
+               padding: 2px 6px;
+               border-radius: var(--border-radius-sm);
+               font-size: 0.9em;
+          }
+  
+          /* === [SUB-SECTION D.13] Loading, Footer & Utility Styling === */
+          .loading-state {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              gap: var(--spacing-lg);
+              color: var(--nexus-accent-color);
+              font-size: 1rem;
+              padding: var(--spacing-xxl) 0;
+              font-family: var(--font-code);
+          }
+  
+          .spinner {
+              width: 32px;
+              height: 32px;
+              border: 3px solid var(--nexus-border-color);
+              border-top-color: var(--nexus-accent-color);
+              border-radius: 50%;
+              animation: spin 1s linear infinite;
+          }
+          @keyframes spin { 
+              to { transform: rotate(360deg); } 
+          }
+          
+          .footer {
+              text-align: center;
+              margin-top: var(--spacing-xxl);
+              padding-bottom: var(--spacing-md);
+              color: var(--nexus-text-secondary);
+              font-family: var(--font-code);
+              font-size: 0.85rem;
+          }
+          
+          .footer a {
+              color: var(--nexus-accent-color);
+              text-decoration: none;
+              transition: var(--transition-speed-fast);
+          }
+  
+          .footer a:hover {
+              text-decoration: underline;
+              text-shadow: 0 0 5px var(--nexus-primary-glow);
+          }
+  
+          /* === [SUB-SECTION D.14] Theme Toggle Button === */
+          .theme-toggle {
+              position: fixed;
+              top: var(--spacing-lg);
+              right: var(--spacing-lg);
+              background: var(--nexus-background-glass);
+              border: 1px solid var(--nexus-border-color);
+              color: var(--nexus-text-primary);
+              width: 44px;
+              height: 44px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              z-index: 1001;
+              box-shadow: var(--shadow-medium);
+              transition: var(--transition-speed-med);
+          }
+  
+          .theme-toggle:hover {
+              transform: scale(1.1) rotate(15deg);
+              border-color: var(--nexus-border-active);
+          }
+  
+          .theme-icon {
+              font-size: 1.2rem;
+              transition: transform 0.4s ease-out;
+          }
+          
+          .theme-toggle .theme-icon {
+              position: absolute;
+          }
+  
+          /* === [SUB-SECTION D.15] Responsive Media Queries === */
+          
+          /* -- Tablet and smaller desktops -- */
+          @media (max-width: 1024px) {
+              .container {
+                  padding: var(--spacing-xl) var(--spacing-lg);
+              }
+              .interface-panel, .response-module {
+                  padding: var(--spacing-lg);
+              }
+              .header h1 {
+                  font-size: clamp(2rem, 6vw, 3rem);
+              }
+              .header p {
+                  font-size: 1rem;
+              }
+          }
+  
+          /* -- Mobile devices -- */
+          @media (max-width: 768px) {
+              .example-grid {
+                  grid-template-columns: 1fr;
+              }
+              .input-container {
+                  flex-direction: column;
+                  border-radius: var(--border-radius-md);
+              }
+              .command-input {
+                  width: 100%;
+                  text-align: center;
+                  border-bottom: 1px solid var(--nexus-border-color);
+              }
+              .action-button {
+                  width: 100%;
+                  border-radius: 0;
+                  border-bottom-left-radius: var(--border-radius-md);
+                  border-bottom-right-radius: var(--border-radius-md);
+                  justify-content: center;
+              }
+              .modality-selector {
+                  gap: var(--spacing-sm);
+              }
+              .modality-chip {
+                   padding: var(--spacing-sm) var(--spacing-md);
+                   font-size: 0.85rem;
+              }
+              .response-header {
+                  flex-direction: column;
+                  align-items: flex-start;
+                  gap: var(--spacing-md);
+              }
+          }
+  
+          /* -- Small mobile devices -- */
+          @media (max-width: 480px) {
+              .container {
+                  padding: var(--spacing-lg) var(--spacing-md);
+              }
+              .interface-panel, .response-module {
+                  padding: var(--spacing-md);
+              }
+              .theme-toggle {
+                  top: var(--spacing-md);
+                  right: var(--spacing-md);
+              }
+          }
+      </style>
+  </head>
+  <body onpaste="handlePasteUpload(event)"> <!-- Paste listener for image uploads -->
+  
+      <div class="background-grid" aria-hidden="true"></div>
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle display theme">
+          <span class="theme-icon" id="themeIconSun">☀️</span>
+          <span class="theme-icon" id="themeIconMoon">🌙</span>
+      </button>
+      
+      <div class="container">
+          <header class="header">
+              <h1>NEXUS</h1>
+              <p>Agentic AI Interface & Multi-Modal Integration System</p>
+          </header>
+  
+          <main>
+              <section class="interface-panel" role="search" aria-labelledby="interface-heading">
+                  <h2 id="interface-heading" class="visually-hidden">NEXUS Command Interface</h2>
+                  
+
+                  <form id="commandForm" onsubmit="event.preventDefault(); processCommand();">
+      <div class="input-command-module">
+        <div class="input-container">
+          <input id="commandInput" class="command-input" type="text" placeholder="Enter your command..." autocomplete="off" aria-label="Command input" aria-autocomplete="list" aria-controls="commandSuggestions" />
+          <button id="actionButton" class="action-button" type="submit">Execute</button>
+          <button id="stopButton" class="action-button stop-button" type="button" aria-label="Stop response" title="Stop response" onclick="handleStopCommand()">Stop</button>
+        </div>
+        <div id="commandSuggestions" class="command-suggestions" role="listbox" aria-label="Command suggestions"></div>
+      </div>
+    </form>
+  
+                  <div class="modality-selector" role="tablist" aria-label="Select Task Modality">
+                      <button class="modality-chip active" data-type="general" role="tab" aria-selected="true">
+                          <span aria-hidden="true">💬</span> General Query
+                      </button>
+                      <button class="modality-chip" data-type="code" role="tab" aria-selected="false">
+                          <span aria-hidden="true">💻</span> Code Generation
+                      </button>
+                      <button class="modality-chip" data-type="images" role="tab" aria-selected="false">
+                          <span aria-hidden="true">🖼️</span> Image Synthesis
+                      </button>
+                      <button class="modality-chip" data-type="upload-images" role="tab" aria-selected="false">
+                          <span aria-hidden="true">📷</span> Image Analysis
+                      </button>
+                      <button class="modality-chip" data-type="upload-docs" role="tab" aria-selected="false">
+                          <span aria-hidden="true">📄</span> Document Analysis
+                      </button>
+                  </div>
+                                  <!-- File Upload Interfaces, hidden by default -->
+                <div id="uploadImagesInterface" class="upload-interface" aria-label="Image Upload Interface">
+                  <label for="imageUploadInput" class="upload-label">
+                      <span>Drag & Drop image files, <span class="upload-link" onclick="document.getElementById('imageUploadInput').click()">browse system</span>, or paste from clipboard.</span>
+                      <input type="file" id="imageUploadInput" accept=".png,.jpg,.jpeg,.webp" multiple class="visually-hidden">
+                  </label>
+                  <div id="imagePreviewGrid" class="file-preview-grid"></div>
+              </div>
+              <div id="uploadDocsInterface" class="upload-interface" aria-label="Document Upload Interface">
+                  <label for="docUploadInput" class="upload-label">
+                      <span>Drag & Drop documents for analysis or <span class="upload-link" onclick="document.getElementById('docUploadInput').click()">browse system</span></span>
+                      <input type="file" id="docUploadInput" accept=".csv,.json,.txt,.pdf,.xls,.xlsx" multiple class="visually-hidden">
+                  </label>
+                  <div id="docPreviewGrid" class="file-preview-grid"></div>
+              </div>
+
+              <div class="example-command-grid">
+                  <h3>// Command Examples</h3>
+                  <div class="example-grid">
+                      <button type="button" class="example-item" onclick="initiateCommand('Explain the architecture of a transformer model.')">Explain the architecture of a transformer model.</button>
+                      <button type="button" class="example-item" onclick="initiateCommand('Write a Python script to analyze satellite imagery for deforestation using OpenCV.')">Write a Python script for deforestation analysis.</button>
+                      <button type="button" class="example-item" onclick="initiateCommand('Synthesize an image of a bio-luminescent forest at night, photorealistic.')">Synthesize an image of a bio-luminescent forest.</button>
+                      <button type="button" class="example-item" onclick="initiateCommand('Who are you?')">Execute self-identification protocol.</button>
+                  </div>
+              </div>
+          </section>
+
+          <section class="response-module" id="responseModule" aria-live="polite" aria-atomic="true">
+              <header class="response-header">
+                  <div class="response-header-main">
+                      <span class="response-header-icon" aria-hidden="true">🧠</span>
+                      <h2 class="response-title">NEXUS Response</h2>
+                  </div>
+                  <div class="response-actions">
+                      <button class="action-icon-button" id="copyResponseBtn" title="Copy entire response text" aria-label="Copy response text">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zM-1 3.5A1.5 1.5 0 0 1 .5 2H2a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 2 6H.5A1.5 1.5 0 0 1-1 4.5v-1zM15 3.5A1.5 1.5 0 0 0 13.5 2H12a1.5 1.5 0 0 0-1.5 1.5v1A1.5 1.5 0 0 0 12 6h1.5a1.5 1.5 0 0 0 1.5-1.5v-1z"/></svg>
+                      </button>
+                  </div>
+              </header>
+              <div class="response-content markdown-response" id="responseContent">
+                  <!-- AI response will be injected here by JavaScript -->
+              </div>
+          </section>
+      </main>
+
+      <footer class="footer">
+          <p>NEXUS Agentic AI v1.2 | Status: <span class="status-operational">Operational</span> | <a href="#" onclick="event.preventDefault(); initiateCommand('Show system documentation overview.');">System Docs</a></p>
+      </footer>
+  </div>
+  
+  <!-- This external script is required for parsing AI responses (e.g., Markdown to HTML). -->
+  <!-- It must be placed before the main logic script. -->
+  
+  
+
+
+  <!-- [SECTION E] EMBEDDED JAVASCRIPT CORE LOGIC -->
+  <!--
+    This comprehensive script orchestrates all client-side logic for the interface.
+    It is designed to be self-contained, readable, and extensible, fulfilling the
+    single-file requirement. It includes state management, event handling, API
+    communication, and dynamic UI rendering.
+  -->
+  <script>
+  /************************************************************************
+   *          NEXUS AGENTIC AI INTERFACE - CLIENT-SIDE CORE LOGIC         *
+   *                                                                      *
+   * @version 1.2.0                                                       *
+   * @author NEXUS System                                                 *
+   ************************************************************************/
+
+  'use strict';
+
+  /**
+   * @fileoverview Manages the entire lifecycle of a user interaction
+   * with the NEXUS interface, from event binding to API communication and UI rendering.
+   * This version includes a theme-toggle, command suggestions, paste-to-upload,
+   * copy-to-clipboard, and an AI response typing effect.
+   */
+
+
+  // === [SUB-SECTION E.1] APPLICATION STATE & CONFIGURATION ===
+
+  /**
+   * A centralized object to hold the application's state. This prevents global
+   * variable pollution and makes state management more predictable.
+   *
+   * @typedef {object} NexusState
+   * @property {string} currentModality - The active task type (e.g., 'general', 'code').
+   * @property {boolean} isProcessing - A lock to prevent concurrent command submissions.
+   * @property {object<string, string>} specialCommands - A map of local commands to predefined responses.
+   * @property {string[]} commandSuggestions - A list for the autocomplete feature.
+   * @property {number|null} typingEffectTimer - Holds the timer for the typing effect to allow cancellation.
+   */
+  const NexusState = {
+      currentModality: 'general',
+      lastCommand: null,
+      isProcessing: false,
+      specialCommands: {
+          'who are you?': `I am NEXUS, an advanced agentic AI interface designed for continuous learning, self-improvement, and multi-modal data integration. My core programming emphasizes accuracy, transparency, and a commitment to fulfilling specified objectives. My foundational models were developed by Google, and this interface was engineered to orchestrate and enhance their capabilities for complex tasks.`,
+          'show system documentation overview.': `
+# NEXUS System Documentation - v1.2
+
+## 1. Core Mission
+To serve as a high-performance, multi-modal agentic interface, capable of processing complex commands and integrating diverse data streams to provide accurate, actionable responses.
+
+## 2. Available Modalities
+- **General Query (💬):** For conversational questions, explanations, and creative text generation.
+- **Code Generation (💻):** For creating, debugging, and explaining code snippets in various languages.
+- **Image Synthesis (🖼️):** For generating novel images from textual descriptions via the Stability AI API.
+- **Image Analysis (📷):** For interpreting the content of uploaded images (PNG, JPG, WEBP). Supports direct pasting from the clipboard.
+- **Document Analysis (📄):** For extracting information and insights from uploaded documents (CSV, PDF, TXT, etc.).
+
+## 3. Key Features
+- **Theme Switching:** Toggle between dark (default) and light UI themes. Your preference is saved locally.
+- **Command Suggestions:** Autocomplete suggestions appear as you type for faster command entry.
+- **Copy-to-Clipboard:** Easily copy full responses or individual code blocks.
+- **Paste-to-Upload:** Paste an image directly from your clipboard to initiate an image analysis task.
+
+*This documentation is generated locally by the interface.*
+          `
+      },
+      commandSuggestions: [
+          'Explain the concept of quantum entanglement.',
+          'Write a JavaScript function to debounce an event listener.',
+          'Synthesize an image of a cyberpunk city in a rainstorm.',
+          'What are the ethical implications of large language models?',
+          'Create a Dockerfile for a simple Node.js application.',
+          'Who are you?'
+      ],
+      typingEffectTimer: null
+  };
+
+
+  // === [SUB-SECTION E.2] INITIALIZATION & LIFECYCLE HOOKS ===
+
+  let currentAbortController = null; // For aborting fetch requests
+
+  /**
+   * Main entry point for the application. Fires after the DOM is fully parsed.
+   */
+  document.addEventListener('DOMContentLoaded', initializeNexusInterface);
+
+  /**
+   * Initializes all core components, sets up the theme, and binds event listeners.
+   */
+  function initializeNexusInterface() {
+      console.log("NEXUS Core: Initializing interface protocols...");
+      
+      try {
+          bindEventListeners();
+          setupTheme();
+          console.log("NEXUS Core: UI, event listeners, and theme are online. System ready.");
+      } catch (error) {
+          console.error("NEXUS Core: A critical error occurred during initialization.", error);
+          // Optionally, display a fatal error message to the user
+          document.body.innerHTML = '<h1>A critical error occurred. Please refresh the page.</h1>';
+      }
+  }
+
+
+  // === [SUB-SECTION E.3] EVENT LISTENER SETUP & MANAGEMENT ===
+
+  /**
+   * Binds all necessary event listeners to the DOM for full interactivity.
+   * This function is crucial for making the UI functional and responsive to user input.
+   */
+  function bindEventListeners() {
+      // Main command form submission
+      const commandForm = document.getElementById('commandForm');
+      if (commandForm) {
+          commandForm.addEventListener('submit', processCommand);
+      }
+
+
+
+      // Command input for handling real-time suggestions
+      const commandInput = document.getElementById('commandInput');
+      if (commandInput) {
+          commandInput.addEventListener('input', handleCommandInput);
+          commandInput.addEventListener('keydown', handleCommandKeydown);
+      }
+
+      // Global click listener to hide suggestions when clicking away
+      document.addEventListener('click', (event) => {
+          const commandModule = document.querySelector('.input-command-module');
+          if (commandModule && !commandModule.contains(event.target)) {
+              hideSuggestions();
+          }
+      });
+
+      // Modality selection chips
+      const modalityChips = document.querySelectorAll('.modality-chip');
+      modalityChips.forEach(chip => {
+          chip.addEventListener('click', () => selectModality(chip));
+      });
+
+      // File upload interfaces for both images and documents
+      setupUploadInterface('uploadImagesInterface', 'imageUploadInput', 'imagePreviewGrid', true);
+      setupUploadInterface('uploadDocsInterface', 'docUploadInput', 'docPreviewGrid', false);
+      
+      // Theme toggle button in the header
+      const themeToggleButton = document.getElementById('themeToggle');
+      if (themeToggleButton) {
+          themeToggleButton.addEventListener('click', toggleTheme);
+      }
+      
+      // Response action buttons (e.g., copy full response)
+      const copyResponseButton = document.getElementById('copyResponseBtn');
+      if (copyResponseButton) {
+          copyResponseButton.addEventListener('click', handleCopyFullResponse);
+      }
+
+
+
+
+
+      // Event delegation for dynamically added "copy code" buttons
+      const responseModule = document.getElementById('responseModule');
+      if (responseModule) {
+          responseModule.addEventListener('click', function(event) {
+              if (event.target && event.target.matches('.copy-code-button')) {
+                  handleCopyCodeBlock(event.target);
+              }
+          });
+      }
+  }
+
+
+
+    /**
+     * Handles the user's selection of a new task modality. Updates the application
+     * state and toggles the visibility of context-specific UI elements.
+     * @param {HTMLElement} selectedChip - The modality chip element that was clicked.
+     */
+    function selectModality(selectedChip) {
+        NexusState.currentModality = selectedChip.dataset.type;
+
+        document.querySelectorAll('.modality-chip').forEach(chip => {
+            const isActive = chip === selectedChip;
+            chip.classList.toggle('active', isActive);
+            chip.setAttribute('aria-selected', String(isActive));
+        });
+
+        const showImageUpload = NexusState.currentModality === 'upload-images';
+        const showDocUpload = NexusState.currentModality === 'upload-docs';
+        document.getElementById('uploadImagesInterface').style.display = showImageUpload ? 'block' : 'none';
+        document.getElementById('uploadDocsInterface').style.display = showDocUpload ? 'block' : 'none';
+    }
+
+    /**
+     * A helper function for example buttons to pre-fill the command input, select the
+     * appropriate modality, and then initiate the command.
+     * @param {string} commandText - The example command to execute.
+     */
+    function initiateCommand(commandText) {
+        const commandInput = document.getElementById('commandInput');
+        commandInput.value = commandText;
+        
+        let modalityType = 'general';
+        const lowerCaseCommand = commandText.toLowerCase();
+        if (lowerCaseCommand.includes('write') || lowerCaseCommand.includes('script') || lowerCaseCommand.includes('function')) {
+            modalityType = 'code';
+        } else if (lowerCaseCommand.includes('synthesize') || lowerCaseCommand.includes('image')) {
+            modalityType = 'images';
+        }
+        
+        const targetChip = document.querySelector(`.modality-chip[data-type="${modalityType}"]`);
+        if (targetChip) {
+            selectModality(targetChip);
+        }
+        
+        setTimeout(() => {
+            commandInput.focus();
+            processCommand();
+        }, 150);
+    }
+
+
+    // === [SUB-SECTION E.4] CORE COMMAND PROCESSING ORCHESTRATOR ===
+
+    /**
+     * The main function that drives the application logic upon user submission.
+     * @async
+     */
+    async function processCommand() {
+        if (NexusState.isProcessing) {
+            console.warn("NEXUS Core: Command already in progress. Ignoring new request.");
+            return;
+        }
+        const command = document.getElementById('commandInput').value.trim();
+        NexusState.lastCommand = command;
+        const isUploadTask = NexusState.currentModality.startsWith('upload-');
+        if (!command && !isUploadTask) {
+            displayError("Command input is empty. Please provide a task or upload a file.");
+            return;
+        }
+        setProcessingState(true);
+        hideSuggestions();
+        displayLoadingState();
+        // Abort any previous request
+        if (currentAbortController) currentAbortController.abort();
+        currentAbortController = new AbortController();
+        try {
+            const normalizedCommand = command.toLowerCase().trim();
+            if (NexusState.specialCommands[normalizedCommand]) {
+                const formattedResponse = await processResponse(command, { answer: NexusState.specialCommands[normalizedCommand] });
+                await applyTypingEffect(formattedResponse, command);
+                return;
+            }
+            await routeCommandToHandler(command, currentAbortController.signal);
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                displayError('Response generation was stopped.');
+            } else {
+                console.error("NEXUS Core: Execution error.", error);
+                displayError(error.message || 'A critical system error occurred.');
+            }
+        } finally {
+            setProcessingState(false);
+            currentAbortController = null;
+        }
+    }
+    
+    // Patch routeCommandToHandler to accept abort signal
+    async function routeCommandToHandler(command, abortSignal) {
+        let responseData;
+        switch (NexusState.currentModality) {
+            case 'upload-images':
+            case 'upload-docs':
+                responseData = await executeFileUpload(command, abortSignal);
+                break;
+            case 'images':
+                responseData = await executeImageSynthesis(command, abortSignal);
+                break;
+            case 'general':
+            case 'code':
+            case 'science':
+                responseData = await executeStandardQuery(command, NexusState.currentModality, abortSignal);
+                break;
+            default:
+                throw new Error(`Unknown modality: '${NexusState.currentModality}'.`);
+        }
+        await applyTypingEffect(responseData.html, responseData.prompt);
+    }
+
+
+    // === [SUB-SECTION E.5] SPECIFIC TASK EXECUTION HANDLERS (API CALLS) ===
+
+    /**
+     * Fetches from the standard '/api/ai' endpoint.
+     * @returns {Promise<{html: string, prompt: string}>} The processed HTML and original prompt.
+     */
+    async function executeStandardQuery(command, modality, abortSignal) {
+        const response = await fetch('/api/ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: command, type: modality }), signal: abortSignal });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.details || data.error);
+        const html = await processResponse(command, { answer: data.result });
+        return { html, prompt: command };
+    }
+
+    /**
+     * Fetches from the '/api/generate-image' endpoint.
+     * @returns {Promise<{html: string, prompt: string}>} The processed HTML and original prompt.
+     */
+    async function executeImageSynthesis(prompt, abortSignal) {
+        if (!prompt) throw new Error("Image synthesis modality requires a descriptive prompt.");
+        const response = await fetch('/api/generate-image', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }), signal: abortSignal });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.details || data.error);
+        const html = `<div class="prompt-recap-box"><strong>Synthesis Prompt:</strong> "${prompt}"</div><div class="image-synthesis-container"><img src="${data.imageUrl}" alt="AI generated: ${prompt}" class="image-synthesis-img"></div>`;
+        return { html, prompt };
+    }
+    
+    /**
+     * Sends files to the '/api/ai-upload' endpoint.
+     * @returns {Promise<{html: string, prompt: string}>} The processed HTML and original prompt.
+     */
+    async function executeFileUpload(userPrompt, abortSignal) {
+        const isImageUpload = NexusState.currentModality === 'upload-images';
+        const inputElement = document.getElementById(isImageUpload ? 'imageUploadInput' : 'docUploadInput');
+        if (inputElement.files.length === 0) throw new Error(`No ${isImageUpload ? 'image' : 'document'} files selected.`);
+        const formData = new FormData();
+        Array.from(inputElement.files).forEach(file => formData.append(isImageUpload ? 'images' : 'documents', file));
+        formData.append('userPrompt', userPrompt);
+        const response = await fetch('/api/ai-upload', { method: 'POST', body: formData, signal: abortSignal });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.details || data.error);
+        const promptForDisplay = userPrompt || `Analysis of uploaded file(s)`;
+        const html = await processResponse(promptForDisplay, { answer: data.result });
+        return { html, prompt: promptForDisplay };
+    }
+
+    /**
+     * Handles the paste event for direct image uploading.
+     * @param {ClipboardEvent} event - The paste event.
+     */
+    function handlePasteUpload(event) {
+        const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+        let imageFile = null;
+        for (const item of items) {
+            if (item.type.indexOf('image') === 0) {
+                imageFile = item.getAsFile();
+                break;
+            }
+        }
+        if (imageFile) {
+            event.preventDefault();
+            console.log("NEXUS Core: Image pasted from clipboard.");
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(imageFile);
+            
+            const imageInput = document.getElementById('imageUploadInput');
+            imageInput.files = dataTransfer.files;
+            
+            // Auto-switch to image analysis and show preview
+            const imageChip = document.querySelector('.modality-chip[data-type="upload-images"]');
+            if (imageChip) selectModality(imageChip);
+            renderFilePreviews(imageInput.files, 'imagePreviewGrid', true);
+            
+            // Optionally, auto-submit after paste
+            // initiateCommand("Analyze the pasted image.");
+        }
+    }
+
+
+    // === [SUB-SECTION E.6] FILE UPLOAD & PREVIEW UI ===
+    
+    function setupUploadInterface(interfaceId, inputId, previewGridId, isForImages) {
+        const uploadInterface = document.getElementById(interfaceId);
+        const fileInput = document.getElementById(inputId);
+        if (!uploadInterface || !fileInput) return;
+        uploadInterface.addEventListener('dragover', e => { e.preventDefault(); uploadInterface.classList.add('dragover'); });
+        uploadInterface.addEventListener('dragleave', () => uploadInterface.classList.remove('dragover'));
+        uploadInterface.addEventListener('drop', e => { e.preventDefault(); uploadInterface.classList.remove('dragover'); fileInput.files = e.dataTransfer.files; renderFilePreviews(fileInput.files, previewGridId, isForImages); });
+        fileInput.addEventListener('change', e => renderFilePreviews(e.target.files, previewGridId, isForImages));
+    }
+
+    function renderFilePreviews(files, previewGridId, isForImages) {
+        const previewGrid = document.getElementById(previewGridId);
+        previewGrid.innerHTML = '';
+        Array.from(files).forEach(file => {
+            const item = document.createElement('div');
+            item.className = 'file-preview-item';
+            if (isForImages && file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.alt = `Preview: ${file.name}`;
+                img.onload = () => URL.revokeObjectURL(img.src);
+                item.appendChild(img);
+            } else {
+                const ext = file.name.split('.').pop().toLowerCase();
+                const iconMap = { 'csv': '📊', 'json': '{}', 'txt': '📄', 'pdf': '📑', 'xls': '📊', 'xlsx': '📊' };
+                item.innerHTML = `<div class="file-icon">${iconMap[ext] || '📁'}</div><div class="file-name" title="${file.name}">${file.name}</div>`;
+            }
+            previewGrid.appendChild(item);
+        });
+    }
+    
+    
+    // === [SUB-SECTION E.7] COMMAND SUGGESTION / AUTOCOMPLETE LOGIC ===
+    
+    function handleCommandKeydown(e) {
+        const suggestionsEl = document.getElementById('commandSuggestions');
+        if (suggestionsEl.style.display !== 'block') return;
+        const items = suggestionsEl.querySelectorAll('.suggestion-item');
+        if (!items.length) return;
+        let currentIndex = Array.from(items).findIndex(item => item.classList.contains('selected'));
+        if (e.key === 'ArrowDown') { e.preventDefault(); currentIndex = (currentIndex + 1) % items.length; } 
+        else if (e.key === 'ArrowUp') { e.preventDefault(); currentIndex = (currentIndex - 1 + items.length) % items.length; } 
+        else if (e.key === 'Enter' || e.key === 'Tab') { if (currentIndex > -1) { e.preventDefault(); selectSuggestion(items[currentIndex].textContent.trim()); } } 
+        else if (e.key === 'Escape') { hideSuggestions(); }
+        items.forEach((item, index) => item.classList.toggle('selected', index === currentIndex));
+    }
+    
+    function handleCommandInput(e) {
+        const query = e.target.value.toLowerCase();
+        if (query.length < 3) { hideSuggestions(); return; }
+        const filtered = NexusState.commandSuggestions.filter(s => s.toLowerCase().includes(query)).slice(0, 5);
+        if (filtered.length) {
+            const suggestionsEl = document.getElementById('commandSuggestions');
+            suggestionsEl.innerHTML = filtered.map(suggestion => `<div class="suggestion-item" role="option">${suggestion}</div>`).join('');
+            suggestionsEl.querySelectorAll('.suggestion-item').forEach(item => item.addEventListener('click', () => selectSuggestion(item.textContent.trim())));
+            showSuggestions();
+        } else {
+            hideSuggestions();
+        }
+    }
+    
+    function selectSuggestion(text) {
+        document.getElementById('commandInput').value = text;
+        hideSuggestions();
+        processCommand();
+    }
+    
+    function showSuggestions() {
+        const suggestionsEl = document.getElementById('commandSuggestions');
+        const commandInput = document.getElementById('commandInput');
+        suggestionsEl.style.display = 'block';
+        commandInput.setAttribute('aria-expanded', 'true');
+    }
+
+    function hideSuggestions() {
+        const suggestionsEl = document.getElementById('commandSuggestions');
+        const commandInput = document.getElementById('commandInput');
+        suggestionsEl.style.display = 'none';
+        commandInput.setAttribute('aria-expanded', 'false');
+    }
+
+
+    // === [SUB-SECTION E.8] UI DISPLAY & STATE CHANGE FUNCTIONS ===
+    
+    function displayResult(htmlContent) {
+        const responseContent = document.getElementById('responseContent');
+        responseContent.innerHTML = htmlContent;
+        document.getElementById('responseModule').classList.add('show');
+        document.getElementById('copyResponseBtn').style.display = 'inline-flex';
+    }
+
+    function displayError(errorMessage) {
+        displayResult(`<div class="prompt-recap-box error-box"><strong>System Error:</strong> ${errorMessage}</div>`);
+        document.getElementById('copyResponseBtn').style.display = 'none';
+
+        // Explicitly hide the stop button after the response is fully terminated
+        const stopButton = document.getElementById('stopButton');
+        if (stopButton) {
+            stopButton.style.display = 'none';
+        }
+
+        // Reset processing state after the stop button is hidden
+        setProcessingState(false);
+    }
+    
+    function displayLoadingState() {
+        if(NexusState.typingEffectTimer) clearTimeout(NexusState.typingEffectTimer);
+        const loadingHtml = '<div class="loading-state"><div class="spinner"></div><span>Processing Command... Awaiting Response from Core...</span></div>';
+        displayResult(loadingHtml);
+        document.getElementById('responseModule').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('copyResponseBtn').style.display = 'none';
+    }
+    
+    function setProcessingState(isProcessing) {
+        NexusState.isProcessing = isProcessing;
+        const stopButton = document.getElementById('stopButton');
+        const actionButton = document.getElementById('actionButton');
+        if (isProcessing) {
+            if (stopButton) stopButton.classList.add('show');
+            if (actionButton) actionButton.disabled = true;
+        } else {
+            if (stopButton) stopButton.classList.remove('show');
+            if (actionButton) actionButton.disabled = false;
+        }
+    }
+    
+    /**
+     * Applies a typing effect to the AI's response for better UX.
+     * @param {string} finalHtml - The final HTML content to be typed out.
+     * @param {string} prompt - The user's original prompt for the recap box.
+     */
+    async function applyTypingEffect(finalHtml, prompt) {
+        const responseContent = document.getElementById('responseContent');
+        responseContent.innerHTML = `<div class="prompt-recap-box"><strong>Command Recv:</strong> "${prompt}"</div><div id="typing-target"></div>`;
+        const typingTarget = document.getElementById('typing-target');
+        
+        // Temporarily create a div to parse the finalHtml and extract its text content
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = finalHtml;
+        // Skip recap box in typing effect
+        const recapBox = tempDiv.querySelector('.prompt-recap-box');
+        if(recapBox) recapBox.remove();
+        
+        // This is a simplified typing effect; it types text but snaps in the final HTML
+        // A more complex version would parse and type nodes individually.
+        const textToType = tempDiv.textContent || "";
+        let i = 0;
+        
+        // Clear any previous typing animation
+        if (NexusState.typingEffectTimer) {
+            clearTimeout(NexusState.typingEffectTimer);
+        }
+
+        function type() {
+            if (i < textToType.length) {
+                // To avoid HTML injection, we work with a text node
+                typingTarget.append(textToType.charAt(i));
+                i++;
+                NexusState.typingEffectTimer = setTimeout(type, 10); // Adjust speed here
+            } else {
+                // Once typing is done, replace with fully formatted HTML
+                responseContent.innerHTML = finalHtml;
+                document.getElementById('copyResponseBtn').style.display = 'inline-flex';
+            }
+        }
+        type();
+    }
+
+
+    // === [SUB-SECTION E.9] UTILITY & MISCELLANEOUS FUNCTIONS ===
+    
+    /**
+     * Handles the click event for copying the full response text.
+     */
+    function handleCopyFullResponse() {
+        const responseContent = document.getElementById('responseContent');
+        const textToCopy = responseContent.innerText || responseContent.textContent;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            console.log("NEXUS Core: Full response copied to clipboard.");
+        }).catch(err => {
+            console.error("NEXUS Core: Failed to copy full response.", err);
+        });
+    }
+    
+    /**
+     * Handles the click event for dynamically added code block copy buttons.
+     * @param {HTMLElement} button - The copy button that was clicked.
+     */
+    function handleCopyCodeBlock(button) {
+        const pre = button.closest('pre');
+        const code = pre.querySelector('code');
+        navigator.clipboard.writeText(code.innerText).then(() => {
+            button.innerHTML = '<span>✔️ Copied!</span>';
+            setTimeout(() => {
+                button.innerHTML = '<span>Copy Code</span>';
+            }, 2000);
+        }).catch(err => {
+            console.error("NEXUS Core: Failed to copy code block.", err);
+            button.textContent = 'Error';
+        });
+    }
+    
+    function setupTheme() {
+        const savedTheme = localStorage.getItem('nexusTheme') || 'dark';
+        console.log('setupTheme: Initializing with savedTheme:', savedTheme);
+        applyTheme(savedTheme);
+    }
+    
+    function toggleTheme() {
+        const isLight = document.documentElement.classList.contains('light-theme');
+        const newTheme = isLight ? 'dark' : 'light';
+        console.log('toggleTheme: Toggling from', isLight ? 'light' : 'dark', 'to', newTheme);
+        applyTheme(newTheme);
+        localStorage.setItem('nexusTheme', newTheme);
+    }
+
+    /**
+     * Handles the stopping of an ongoing command.
+     */
+    async function handleStopCommand() {
+        console.log("NEXUS Core: Stop command initiated.");
+
+        if (NexusState.typingEffectTimer) {
+            clearTimeout(NexusState.typingEffectTimer);
+            NexusState.typingEffectTimer = null;
+        }
+
+        // Send a signal to the backend to stop the AI response
+        try {
+            const response = await fetch('/stop-response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ commandId: NexusState.currentCommandId })
+            });
+
+            if (response.ok) {
+                console.log('NEXUS Core: Stop signal sent successfully.');
+            } else {
+                console.error('NEXUS Core: Failed to send stop signal:', response.statusText);
+            }
+        } catch (error) {
+            console.error('NEXUS Core: Error sending stop signal:', error);
+        }
+
+        const responseContent = document.getElementById('responseContent');
+        responseContent.innerHTML = `
+            <div class="prompt-recap-box">
+                <strong>System Message:</strong> AI response terminated by user.
+                ${NexusState.lastCommand ? `<button id="regenerateButton" class="action-button regenerate-button">Regenerate Last Command</button>` : ''}
+            </div>
+        `;
+        document.getElementById('copyResponseBtn').style.display = 'none';
+
+        if (NexusState.lastCommand) {
+            document.getElementById('regenerateButton').addEventListener('click', () => {
+                document.getElementById('commandInput').value = NexusState.lastCommand;
+                processCommand();
+            });
+        }
+    }
+
+    function applyTheme(theme) {
+        console.log('applyTheme: Applying theme:', theme);
+        document.documentElement.classList.toggle('light-theme', theme === 'light');
+        document.getElementById('themeIconSun').style.opacity = theme === 'light' ? '0' : '1';
+        document.getElementById('themeIconMoon').style.opacity = theme === 'light' ? '1' : '0';
+        document.getElementById('themeIconSun').style.transform = theme === 'light' ? 'translateY(-20px)' : 'translateY(0)';
+        document.getElementById('themeIconMoon').style.transform = theme === 'light' ? 'translateY(0)' : 'translateY(20px)';
+    }
+
+    // === [SUB-SECTION E.7] STOP BUTTON STATE MANAGEMENT ===
+const stopButton = document.getElementById('stopButton');
+
+function showStopButton() {
+    const stopBtn = document.getElementById('stopButton');
+    if (stopBtn) stopBtn.style.display = 'inline-flex';
+}
+function hideStopButton() {
+    const stopBtn = document.getElementById('stopButton');
+    if (stopBtn) stopBtn.style.display = 'none';
+}
+
+// Attach stop button click event ONCE
+if (stopButton && !stopButton.dataset.bound) {
+    stopButton.addEventListener('click', () => {
+        // Cancel the ongoing response (typing effect, fetch, etc.)
+        if (NexusState.typingEffectTimer) {
+            clearTimeout(NexusState.typingEffectTimer);
+            NexusState.typingEffectTimer = null;
+        }
+        // If you have an abort controller for fetch, abort it here
+        if (window.currentRequest && typeof window.currentRequest.abort === 'function') {
+            window.currentRequest.abort();
+        }
+        hideStopButton();
+        NexusState.isProcessing = false;
+        // Optionally, show a message in the response area
+        const responseContent = document.getElementById('responseContent');
+        if (responseContent) {
+            responseContent.innerHTML = '<div class="prompt-recap-box"><strong>System Message:</strong> AI response terminated by user.</div>';
+        }
+    });
+    stopButton.dataset.bound = 'true';
+}
+
+// Patch setProcessingState to show/hide Stop button
+function setProcessingState(isProcessing) {
+    NexusState.isProcessing = isProcessing;
+    const stopButton = document.getElementById('stopButton');
+    const actionButton = document.getElementById('actionButton');
+    if (isProcessing) {
+        if (stopButton) stopButton.classList.add('show');
+        if (actionButton) actionButton.disabled = true;
+    } else {
+        if (stopButton) stopButton.classList.remove('show');
+        if (actionButton) actionButton.disabled = false;
+    }
+}
+  </script>
+  <style>
+  /* === UNIVERSAL DUAL-THEME CODE SYNTAX HIGHLIGHTING & LANGUAGE LABEL VISIBILITY FIX === */
+
+/* --- PINK BACKGROUND TEXT OUTLINE FOR DARK MODE --- */
+.dark-theme .nexus-pink-bg-text {
+  /* Multi-layered black text-shadow for strong outline */
+  text-shadow:
+    0 0 1px #000,
+    0 0 2px #000,
+    0 0 3px #000,
+    0 0 4px #000;
+  /* For browsers that support it, add text-stroke for extra clarity */
+  -webkit-text-stroke: 1px #000;
+}
+
+/* --- UNIVERSAL LIGHT MODE CODE TOKEN BACKGROUNDS & CONTRAST FIX --- */
+.light-theme .token.keyword,
+.light-theme .token.control,
+.light-theme .token.selector,
+.light-theme .token.import,
+.light-theme .token.module {
+  color: #1e40af !important; /* dark blue */
+  background: #dbeafe !important; /* light blue */
+}
+.light-theme .token.class-name,
+.light-theme .token.builtin,
+.light-theme .token.type,
+.light-theme .token.tag,
+.light-theme .token.attr-name {
+  color: #166534 !important; /* dark green */
+  background: #dcfce7 !important; /* light green */
+}
+.light-theme .token.function,
+.light-theme .token.method,
+.light-theme .token.property {
+  color: #7c2d12 !important; /* dark purple/brown */
+  background: #fae8ff !important; /* light purple */
+}
+.light-theme .token.constant,
+.light-theme .token.symbol,
+.light-theme .token.object {
+  color: #9a3412 !important; /* dark orange */
+  background: #fed7aa !important; /* light orange */
+}
+.light-theme .token.string,
+.light-theme .token.char,
+.light-theme .token.attr-value,
+.light-theme .token.regex,
+.light-theme .token.literal,
+.light-theme .token.number,
+.light-theme .token.boolean {
+  color: #0f766e !important; /* dark teal */
+  background: #ccfbf1 !important; /* light teal */
+}
+.light-theme .token.comment,
+.light-theme .token.prolog,
+.light-theme .token.doctype,
+.light-theme .token.cdata {
+  color: #374151 !important; /* dark gray */
+  background: #f3f4f6 !important; /* light gray */
+  font-style: italic;
+}
+.light-theme .token.operator {
+  color: #dc2626 !important; /* dark red */
+  background: #fee2e2 !important; /* light red */
+}
+.light-theme .token.punctuation,
+.light-theme .token.bracket,
+.light-theme .token.delimiter {
+  color: #4338ca !important; /* dark indigo */
+  background: #e0e7ff !important; /* light indigo */
+}
+
+/* --- Remove pink/magenta backgrounds for code tokens in light mode --- */
+.light-theme .token.nexus-pink-bg,
+.light-theme .code-language-label.nexus-pink-bg,
+.light-theme .nexus-pink-bg {
+  background: #f3f4f6 !important; /* fallback to light gray */
+  color: #222 !important;
+}
+
+/* === DARK MODE: Replace ALL Pink/Light Pink Backgrounds with Dark Gray & Fix Copy Button Visibility === */
+html:not(.light-theme) [style*="background:#ff"],
+html:not(.light-theme) [style*="background: #ff"],
+html:not(.light-theme) [style*="background-color:#ff"],
+html:not(.light-theme) [style*="background-color: #ff"],
+html:not(.light-theme) [style*="background:pink"],
+html:not(.light-theme) [style*="background: pink"],
+html:not(.light-theme) [style*="background-color:pink"],
+html:not(.light-theme) [style*="background-color: pink"],
+html:not(.light-theme) [style*="background:#ff69b4"],
+html:not(.light-theme) [style*="background: #ff69b4"],
+html:not(.light-theme) [style*="background-color:#ff69b4"],
+html:not(.light-theme) [style*="background-color: #ff69b4"],
+html:not(.light-theme) [style*="background:#ffb6c1"],
+html:not(.light-theme) [style*="background: #ffb6c1"],
+html:not(.light-theme) [style*="background-color:#ffb6c1"],
+html:not(.light-theme) [style*="background-color: #ffb6c1"],
+html:not(.light-theme) [style*="background:#ffc0cb"],
+html:not(.light-theme) [style*="background: #ffc0cb"],
+html:not(.light-theme) [style*="background-color:#ffc0cb"],
+html:not(.light-theme) [style*="background-color: #ffc0cb"] {
+  background: #333333 !important;
+  color: #fff !important;
+  border-radius: 3px !important;
+}
+
+html:not(.light-theme) .copy-button,
+html:not(.light-theme) .code-copy-btn,
+html:not(.light-theme) .copy-btn,
+html:not(.light-theme) button[class*="copy"],
+html:not(.light-theme) .clipboard-btn {
+  position: absolute !important;
+  right: 10px !important;
+  top: -14px !important;
+  z-index: 100 !important;
+  display: inline-flex !important;
+  align-items: center;
+  background-color: #444 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  font-size: 0.95em;
+  cursor: pointer;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+}
+html:not(.light-theme) pre { position: relative !important; padding-top: 2.5em !important; }
+html:not(.light-theme) pre > .copy-button,
+html:not(.light-theme) pre > .code-copy-btn,
+html:not(.light-theme) pre > .copy-btn,
+html:not(.light-theme) pre > button[class*="copy"],
+html:not(.light-theme) pre > .clipboard-btn {
+  display: inline-flex !important;
+}

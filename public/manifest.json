@@ -1,0 +1,20 @@
+{
+  "name": "Binod 3.1 Sonnet",
+  "short_name": "BinodAI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "quantum_favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "quantum_favicon.ico",
+      "sizes": "180x180",
+      "type": "image/x-icon"
+    }
+  ]
+}
